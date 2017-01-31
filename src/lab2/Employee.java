@@ -35,10 +35,21 @@ public class Employee {
         this.lastName = lastName;
         this.ssn = ssn;
     }
+    
+    ///////////////////////////////////// updated ////////////////////////////////////
+    // Create parent method to update Orientation Information in order of operation and update info
+    public void recordEmployeeOrientation (Date orientationDate, String firstName, String lastname, String ssn, String cubeID) {
+        Employee employee1 = new Employee(firstName, lastName, ssn);
+        employee1.meetWithHrForBenefitAndSalryInfo();
+        employee1.meetDepartmentStaff();
+        employee1.reviewDeptPolicies();
+        employee1.moveIntoCubicle(cubeId);     
+    }
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
-    public void meetWithHrForBenefitAndSalryInfo() {
+    //////////  updated to private - shold not be done again after constructor /////
+    private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
@@ -48,7 +59,8 @@ public class Employee {
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.:
-    public void meetDepartmentStaff() {
+    //////////  updated to private - shold not be done again after constructor /////
+    private void meetDepartmentStaff() {
         metDeptStaff = true;
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
@@ -59,6 +71,7 @@ public class Employee {
     // Assume this must be performed third. And assume that because department
     // policies may change that this method may need to be called 
     // independently from other classes.
+    //// no change as this method shoudl be accesbile outside of constructor //////
     public void reviewDeptPolicies() {
         reviewedDeptPolicies = true;
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
@@ -70,6 +83,7 @@ public class Employee {
     // Assume this must be performed 4th. And assume that because employees
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
+    //// no change as this method shoudl be accesbile outside of constructor //////
     public void moveIntoCubicle(String cubeId) {
         this.cubeId = cubeId;
         this.movedIn = true;
@@ -101,8 +115,9 @@ public class Employee {
     public String getSsn() {
         return ssn;
     }
-
-    public void setSsn(String ssn) {
+    
+    /// updated to private as ssn is set in new method and should not be set again
+    private void setSsn(String ssn) {
         this.ssn = ssn;
     }
 
@@ -111,15 +126,17 @@ public class Employee {
     }
 
     // boolean parameters need no validation
-    public void setMetWithHr(boolean metWithHr) {
+    // set to private as this done only once when employee is created
+    private void setMetWithHr(boolean metWithHr) {
         this.metWithHr = metWithHr;
     }
 
     public boolean isMetDeptStaff() {
         return metDeptStaff;
     }
-
-    public void setMetDeptStaff(boolean metDeptStaff) {
+    
+    // set to private as this is only done once when employee is created
+    private void setMetDeptStaff(boolean metDeptStaff) {
         this.metDeptStaff = metDeptStaff;
     }
 
@@ -135,6 +152,7 @@ public class Employee {
         return movedIn;
     }
 
+    // kept as public since method will be needed if an employee moves cubes
     public void setMovedIn(boolean movedIn) {
         this.movedIn = movedIn;
     }
@@ -152,6 +170,6 @@ public class Employee {
         return orientationDate;
     }
 
-    public void setOrientationDate(Date orientationDate) {
+    private void setOrientationDate(Date orientationDate) {
         this.orientationDate = orientationDate;
     }}
