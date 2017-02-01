@@ -52,19 +52,19 @@ public class Employee {
         return cubeID;
     }
     
-    public boolean getMetWithHr () {
+    public boolean isMetWithHr () {
         return metWithHr;
     }
     
-    public boolean getMetDeptStaff () {
+    public boolean isMetDeptStaff () {
         return metDeptStaff;
     }
     
-    public boolean getReviewedDeptPolicies () {
+    public boolean isReviewedDeptPolicies () {
         return reviewedDeptPolicies;
     }
     
-    public boolean getMovedIn () {
+    public boolean isMovedIn () {
         return movedIn;
     }
     
@@ -75,19 +75,45 @@ public class Employee {
     // Setters
     
     public void setFirstName (String firstName) {
+        if (firstName == null || firstName.isEmpty() || firstName.length() < 2)
+        {
+            System.out.println("This is an invalid entry for first name.");
+        }
+        else
+        {
         this.firstName = firstName;
+        }
     }
     
     public void setLastName (String lastName) {
+        if (lastName == null || lastName.isEmpty())
+        {
+            System.out.println("This is an invalid entry for last name.");
+        }
+        else
+        {
         this.lastName = lastName;
+        }
     }
     
     public void setSsn (String ssn) {
+        if (ssn.length() != 9) {
+            System.out.println("This is an invalud entry for social security number.");
+        }
+        else
+        {
         this.ssn = ssn;
+        }
     }
     
     public void setCubeID (String cubeID) {
+        if (cubeID.length() > 4 || cubeID.length() <= 0) {
+            System.out.println("This is an invalid cube number format.");
+        }
+        else
+        {
         this.cubeID = cubeID;
+        }
     }
     
     public void setMetWithHr (boolean metWithHr) {
