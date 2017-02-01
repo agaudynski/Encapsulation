@@ -44,7 +44,7 @@ public class Employee {
     
     ///////////////////////////////////// updated ////////////////////////////////////
     // Create parent method to update Orientation Information in order of operation and update info ///
-    public void recordEmployeeOrientation (Date orientationDate, String cubeID) {
+    public void doFirstEmployeeOrientation (Date orientationDate, String cubeID) {
         this.setOrientationDate(orientationDate);  // Sets initial date to pass along to other methods.
         this.formatDate(orientationDate);   // Formats the date
         this.getFormattedDate();            // Returns the formatted date to method scope
