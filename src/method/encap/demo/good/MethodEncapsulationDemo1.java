@@ -20,7 +20,7 @@ public class MethodEncapsulationDemo1 {
 
         // Simple now -- only one method to understand. Other methods are
         // hidden away (encapsulated) by this method.
-        cake.make(2);
+        cake.makeCake(2);
     }
 
 }
