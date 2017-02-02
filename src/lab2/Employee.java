@@ -206,7 +206,14 @@ public class Employee {
 
     // no change. as employees can change location. cube ids will need to be udpated.
     public void setCubeId(String cubeId) {
+         if (cubeId == null) 
+        {
+            System.out.println("Cube ID can not be empty.");
+        }
+        else
+        {
         this.cubeId = cubeId;
+        }
     }
 
     // no change. orientation date can be returned as reference.
@@ -218,6 +225,13 @@ public class Employee {
     // I would think this program woudl benefit from a initialOrientation variable for the first day
     // and then an orientationDate variable that can be used to catalog subsequent policy reviews
     public void setOrientationDate(Date orientationDate) {
+        if (orientationDate == null)
+        {
+            System.out.println("Orientation Date can not be empty.");
+        }
+        else
+        {
         this.orientationDate = orientationDate;
+        }
     }
 }
