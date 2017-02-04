@@ -49,6 +49,8 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    private Date hireDate;  // Added to experiment with dates
+    private String employeeInfo;
     private EmployeeReportService reportService;
 
     /*
@@ -83,6 +85,7 @@ public class Employee {
     */
     public void doFirstTimeOrientation(String cubeId) {
         orientationDate = new Date();
+        hireDate = new Date();
         meetWithHrForBenefitAndSalryInfo();
         meetDepartmentStaff();
         reviewDeptPolicies();
@@ -219,12 +222,24 @@ public class Employee {
     public Date getOrientationDate() {
         return orientationDate;
     }
+    
+    //Metod added to experiment with HireDate
+    public Date getHireDate() {
+        return hireDate;
+    }
 
     public void setOrientationDate(Date orientationDate) {
         if(orientationDate == null) {
             throw new IllegalArgumentException("orientationDate" + REQUIRED_MSG);
         }
         this.orientationDate = orientationDate;
+    }
+    
+    public void setHireDate(Date hireDate) {
+        if(orientationDate == null) {
+            throw new IllegalArgumentException("hireDate" + REQUIRED_MSG);
+        }
+        this.hireDate = hireDate;
     }
 
     public EmployeeReportService getReportService() {
@@ -234,6 +249,7 @@ public class Employee {
     public void setReportService(EmployeeReportService reportService) {
         this.reportService = reportService;
     }
+    
     
 }
 
