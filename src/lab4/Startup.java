@@ -1,5 +1,7 @@
 package lab4;
 
+import java.util.Date;
+
 /**
  * This class is the startup class for the program. But together with the 
  * other classes provided it is not a particularly good simulation of the 
@@ -11,11 +13,24 @@ package lab4;
  */
 public class Startup {
     public static void main(String[] args) {
-
-        Employee employee = new Employee("Peter","Piper","333-33-3333");
         
-        employee.doFirstTimeOrientation("A101");
-        employee.getReportService().outputReport();
+        
+        //HRSpecialist hr = new HRSpecialist();
+        Company corp = new Company();
+        
+        corp.hireNewEmployee("Peter", "Piper", "333-33-3333", "A101");
+        
+        corp.retrieveEmployeeData();
+        
+        corp.changeEmployeeLocation("B555");
+        
+        corp.retrieveEmployeeData();
+        
+ 
+        
+ 
+        
+       
     }
     
     
