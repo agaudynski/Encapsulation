@@ -13,8 +13,8 @@ public class EmployeeOrientationReportService {
     
     private Employee employee;
     
-    ///// Generic call that can be used
-    public void doOutput (String message){
+    ///// Generic call that can be used at any point as long as a string is passed in.
+    public void createOutput (String message){
         System.out.println(message);
     }
     
@@ -23,11 +23,9 @@ public class EmployeeOrientationReportService {
     public void outputMetWithHrMessage(){
         String message = "Employe has met with HR.";
         System.out.println(message);
-        
     }
     
     ///////
-    
     
     public void outputMetDepartmentStaffMessage () {
     
@@ -37,7 +35,6 @@ public class EmployeeOrientationReportService {
     
     
    ///////
-    
    public void outputReviewDeptPoliciesMessage () {
        String message = "" + employee.getFirstName() + " " + employee.getLastName() + " "
                + "reviewed Dept policies on " + employee.getOrientationDate();

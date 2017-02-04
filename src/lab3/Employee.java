@@ -109,7 +109,7 @@ public class Employee {
         // Using direct object call
         reportService.outputMetDepartmentStaffMessage();
         // Using a generic method that passes a string to perform function
-        output.doOutput(firstName + " " + lastName + " met with HR on " + getFormattedDate());
+        output.createOutput(firstName + " " + lastName + " met with HR on " + getFormattedDate());
     }
 
     // Assume this must be performed third. And assume that because department
@@ -117,7 +117,8 @@ public class Employee {
     // independently from other classes.
     public void reviewDeptPolicies() {
         reviewedDeptPolicies = true;
-        reportService.outputReviewDeptPoliciesMessage();
+        reportService.outputReviewDeptPoliciesMessage();  // Direct call to message in reportService class
+        output.createOutput(firstName + " " + lastName + " reviewed policies on " + getFormattedDate());  // Call to generic method in reportServies
     }
 
     // Assume this must be performed 4th. And assume that because employees
@@ -126,7 +127,8 @@ public class Employee {
     public void moveIntoCubicle(String cubeId) {
         this.cubeId = cubeId;
         this.movedIn = true;
-        reportService.outputMovedIntoCubeMessage(cubeId);
+        reportService.outputMovedIntoCubeMessage(cubeId); // direct call to specific method in ReportServices
+        output.createOutput(firstName + " " + lastName + " is moved into cube " + cubeId); // Call to generic method with arg in ReportServices 
     }
 
     public String getFirstName() {
@@ -150,7 +152,7 @@ public class Employee {
 
     public void setLastName(String lastName) {
         if(lastName == null || lastName.isEmpty()) {
-            System.out.println("last name is required");
+            throw new IllegalArgumentException("last name is required");
         }
         this.lastName = lastName;
     }
@@ -161,7 +163,7 @@ public class Employee {
 
     public void setSsn(String ssn) {
         if(ssn == null || ssn.length() < 9 || ssn.length() > 11) {
-            System.out.println("ssn is required and must be "
+            throw new IllegalArgumentException("ssn is required and must be "
                     + "between 9 and 11 characters (if hyphens are used)");
         }
         this.ssn = ssn;
@@ -207,7 +209,7 @@ public class Employee {
     
     public void setCubeId(String cubeId) {
         if(cubeId == null || cubeId.isEmpty()) {
-            System.out.println("cube id is required");
+            throw new IllegalArgumentException("cube id is required");
         }
         this.cubeId = cubeId;
     }
@@ -218,7 +220,7 @@ public class Employee {
 
     public void setOrientationDate(Date orientationDate) {
         if(orientationDate == null) {
-            System.out.println("orientationDate is required");
+            throw new IllegalArgumentException("orientationDate is required");
         }
         this.orientationDate = orientationDate;
     }
