@@ -31,6 +31,7 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    private String fmtDate;  // Added to store fomatted date;
 
     // Constructor for primary employee information. Takes employee name and assigsn other string defaults.
     public Employee(String firstName, String lastName, String ssn) {
@@ -38,13 +39,15 @@ public class Employee {
         this.lastName = lastName;
         this.ssn = ssn;
         this.cubeId = "not assigned";
-        orientationDate = null;
+        this.fmtDate = "00/00/00";
     }
     
     ///////////////////////////////////// updated ////////////////////////////////////
     // Create parent method to update Orientation Information in order of operation and update info ///
     public void doFirstEmployeeOrientation (Date orientationDate, String cubeID) {
         this.setOrientationDate(orientationDate);  // Sets initial date to pass along to other methods.
+        this.formatDate(orientationDate);   // Formats the date
+        this.getFormattedDate();            // Returns the formatted date to method scope
         this.meetWithHrForBenefitAndSalryInfo();  // Sets metWithHR to true and outputs message
         this.meetDepartmentStaff();               // Sets metWithDept to true and outputs messagge
         this.reviewDeptPolicies();                // Sets reviewedDeptPolicies to true and outputs message
@@ -52,12 +55,15 @@ public class Employee {
     }
     
     // class added to format date. Remains public to allow formatting for other dates
-    public String formatDate(Date orientationDate) {
+    public void formatDate(Date orientationDate) {
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);
-        return fmtDate;
     }
     
+    // Public class added to get date
+    public String getFormattedDate () {
+        return fmtDate;
+    }
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
@@ -65,16 +71,16 @@ public class Employee {
     private void meetWithHrForBenefitAndSalryInfo() {
         setMetWithHr(true);
         System.out.println(firstName + " " + lastName + " met with Hr on "
-            + formatDate(orientationDate));
+            + fmtDate);
     }
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.:
     //////////  updated to private - shold not be done again after occurance /////
     private void meetDepartmentStaff() {
-        setMetDeptStaff(true);
+        setMetDeptStaff(true);      
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
-            + formatDate(orientationDate));
+            + fmtDate);
     }
 
     // Assume this must be performed third. And assume that because department
@@ -84,7 +90,7 @@ public class Employee {
     public void reviewDeptPolicies() {
         setReviewedDeptPolicies(true); 
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
-            + formatDate(orientationDate));
+            + fmtDate);
     }
 
     // Assume this must be performed 4th. And assume that because employees
@@ -95,7 +101,7 @@ public class Employee {
         setCubeId(cubeId);
         setMovedIn(true);  
         System.out.println(firstName + " " + lastName + " moved into cubicle "
-                + cubeId + " on " + formatDate(orientationDate));
+                + cubeId + " on " + fmtDate);
     }
 
     // no change. firstName shoudl be available for public access
@@ -164,7 +170,7 @@ public class Employee {
         this.metWithHr = metWithHr;
     }
 
-    // keep as public so this can be checked.
+    // keep as public so this can be validated.
     public boolean isMetDeptStaff() {
         return metDeptStaff;
     }
@@ -193,7 +199,7 @@ public class Employee {
         return movedIn;
     }
 
-    // no change. Stays public to set to false if employee is moving, or true if 
+    // no change. Stays public to set to false if employee is moving, or ture if 
     // move to new cube is complete.
     public void setMovedIn(boolean movedIn) {
         this.movedIn = movedIn;
