@@ -58,11 +58,7 @@ public class Startup {
         corp.retreiveSavedEmployeeInfo(2);
         
             // Creae space in output
-            System.out.println();
- 
-        
- 
-        
+            System.out.println();   
        
     }
     

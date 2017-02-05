@@ -47,4 +47,5 @@ public class Company {
    public void changeEmployeeLocation(String cubeId, int index){
        hr.changeEmployeeLocation(cubeId, index);
    }
+
 }

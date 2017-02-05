@@ -112,5 +112,5 @@ public class HRSpecialist {
         report.addData(employees[index]);
         report.outputReport();
     }
-    
+ 
 }
